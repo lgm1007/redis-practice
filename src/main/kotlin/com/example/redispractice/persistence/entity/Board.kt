@@ -5,8 +5,8 @@ import org.springframework.data.redis.core.RedisHash
 
 @RedisHash("Boards")
 class Board(
-    @Id private val id: String,
-    private var title: String,
-    private val author: String,
+    @Id val id: String,
+    var title: String,
+    val author: String,
 ) {
 }
