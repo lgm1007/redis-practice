@@ -7,7 +7,6 @@ import org.springframework.data.redis.connection.RedisStandaloneConfiguration
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.data.redis.serializer.StringRedisSerializer
-import kotlin.reflect.jvm.internal.impl.load.kotlin.JvmType.Object
 
 class RedisConfig {
     @Value("\${spring.redis.host}")
@@ -25,8 +24,8 @@ class RedisConfig {
     }
 
     @Bean
-    fun redisTemplate(): RedisTemplate<String, Object> {
-        val redisTemplate = RedisTemplate<String, Object>()
+    fun redisTemplate(): RedisTemplate<String, Any> {
+        val redisTemplate = RedisTemplate<String, Any>()
         redisTemplate.setConnectionFactory(redisConnectionFactory())
         redisTemplate.keySerializer = StringRedisSerializer()
         redisTemplate.valueSerializer = StringRedisSerializer()
